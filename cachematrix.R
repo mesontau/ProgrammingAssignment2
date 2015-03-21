@@ -17,14 +17,16 @@
 ## get()        : returns the matrix 'x'
 ## setinverse   : sets the value of the inverse of 'x'
 makeCacheMatrix <- function(x = matrix()) {
-    i <- NULL
+    i <- NULL # 'i': cached value of the inverse of 'x'
     
-    set <- function(y) { # sets a new matrix into the object 
+    # sets a new matrix into the object
+    set <- function(y) {  
         x <<- y # set the matrix value from outside of the scope of makeCacheMatrix 
-        i <<- NULL # since the matrix is newly set, we set to null its inverse 
+        i <<- NULL # since the matrix is newly set, we set to null its cached inverse 
     }
     
-    get <- function() x  # returns the matrix 'x'
+    # returns the matrix 'x'
+    get <- function() x  
     
     setinverse <- function(inverse){
         i <<- inverse #sets the inverse value of 'x' as cache.
@@ -40,8 +42,8 @@ makeCacheMatrix <- function(x = matrix()) {
         }
     }
     
+    # return the cache-stored value of the inverse of the matrix 'x'
     getinverse <- function() i
-    
     
     #return a list of functions that: 
     #   a) gets/sets the value of the matrix 'x'
